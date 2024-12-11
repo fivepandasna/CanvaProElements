@@ -15,3 +15,12 @@ Currently elements will only download in their original colours
 </details>
 
 ## NOTE: The extension isn't currently functional and shouldn't be downloaded as all it does is scrape images
+
+### Project Goals
+<details>
+  <summary>Project Goals</summary>
+    
+The current main goal of this project is to allow users to easily download and use canva pro elements for free and without loss
+
+In the future, I hope for this extension to automatically add pro elements to projects with customizable colours when clicked
+</details>
