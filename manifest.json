@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Canva Image Downloader",
-  "version": "1.0",
+  "name": "Canva Pro Elements",
+  "version": "0.3",
   "description": "Automatically download Canva elements when clicked.",
   "permissions": [
     "downloads",
