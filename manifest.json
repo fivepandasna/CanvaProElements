@@ -1,28 +1,26 @@
 {
   "manifest_version": 3,
-  "name": "Canva Pro Elements",
-  "version": "0.1",
+  "name": "Canva Image Downloader",
+  "version": "1.0",
+  "description": "Automatically download Canva elements when clicked.",
   "permissions": [
-    "activeTab",  // Permission to access the currently active tab
-    "tabs",
-    "storage"
+    "downloads",
+    "scripting",
+    "activeTab"
   ],
+  "host_permissions": [
+    "*://*.canva.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],  // This applies to all pages
-      "js": ["content.js"]  // Content script to find images
+      "matches": ["*://*.canva.com/*"],
+      "js": ["content.js"]
     }
   ],
-  "action": {
-    "default_popup": "popup.html",  // The popup HTML
-    "default_icon": {
-      "16": "icons/icon16.png",
-      "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
-    }
-  },
-  "host_permissions": [
-    "http://*/*",
-    "https://*/*"
-  ]
+  "icons": {
+    "48": "icon.png"
+  }
 }
