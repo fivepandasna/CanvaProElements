@@ -14,7 +14,7 @@ You can add or edit then add the element to your design
 Currently elements will only download in their original colours
 </details>
 
-## NOTE: The extension isn't currently functional and shouldn't be downloaded as all it does is scrape images
+## NOTE: The extension isn't currently functional and shouldn't be downloaded. Version 3 testing.
 
 ### Project Goals
 <details>
