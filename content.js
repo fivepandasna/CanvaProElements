@@ -1,21 +1,15 @@
-// content.js
+// Listen for clicks on the page
+document.addEventListener("click", (event) => {
+  // Check if the clicked element is part of Canva's element selector
+  const clickedElement = event.target;
 
-// Find all images on the page and return their src URLs
-function getImageUrls() {
-  const images = document.querySelectorAll('img');
-  const imageUrls = [];
-  images.forEach((img) => {
-    const src = img.src;
-    if (src) {
-      imageUrls.push(src);
+  // Use developer tools to identify the correct selector for Canva images
+  if (clickedElement.matches(".element-selector-class")) { 
+    const imageUrl = clickedElement.getAttribute("src"); // Adjust based on Canva's structure
+
+    if (imageUrl) {
+      // Send the image URL to the background script
+      browser.runtime.sendMessage({ action: "download", url: imageUrl });
     }
-  });
-  return imageUrls;
-}
-
-// Send message back to popup
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.action === 'getImages') {
-    sendResponse({ images: getImageUrls() });
   }
 });
