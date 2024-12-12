@@ -1,21 +1,28 @@
-// Add this at the very top to confirm the script is active
-console.log("Background script loaded and running");
+let isListening = false;
 
-// Listener for messages from the content script
+// Toggle listening state when the toolbar icon is clicked
+browser.action.onClicked.addListener((tab) => {
+  isListening = !isListening;
+  console.log("Listening state:", isListening);
+
+  // Notify the content script to enable/disable click monitoring
+  browser.tabs.sendMessage(tab.id, { action: isListening ? "start" : "stop" }).catch((err) => {
+    console.error("Failed to send message to content script:", err);
+  });
+});
+
+// Handle download requests from content script
 browser.runtime.onMessage.addListener((message) => {
-  console.log("Message received in background script:", message);
-
   if (message.action === "download" && message.url) {
-    console.log("Initiating download for URL:", message.url);
+    console.log("Downloading URL:", message.url);
 
     browser.downloads.download({
       url: message.url,
-      filename: `canva-element-${Date.now()}.png`, // Generate a unique filename
+      filename: `canva-element-${Date.now()}.png`,
       conflictAction: "uniquify"
     }).then(() => {
-      console.log("Download started successfully");
+      console.log("Download initiated");
     }).catch((err) => {
       console.error("Download failed:", err);
     });
   }
-});
