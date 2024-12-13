@@ -1,27 +1,33 @@
 {
   "manifest_version": 2,
-  "name": "Element Inspector",
+  "name": "Highlighter",
   "version": "1.0",
-  "description": "Inspect HTML by clicking on elements.",
-  "permissions": ["activeTab", "tabs"],
-  "browser_action": {
-    "default_icon": {
-      "16": "icon.png",
-      "48": "icon.png",
-      "128": "icon.png"
-    },
-    "default_title": "Inspect Element",
-    "default_popup": "popup.html"
-  },
+  "description": "Highlights page elements when clicked.",
+  "permissions": [
+    "activeTab"
+  ],
   "background": {
-    "scripts": ["background.js"],
+    "scripts": [
+      "background.js"
+    ],
     "persistent": false
+  },
+  "browser_action": {
+    "default_title": "Page Element Highlighter"
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content_script.js"
+      ]
     }
   ],
-  "web_accessible_resources": ["styles.css"]
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{6cfa6906-9a54-41ab-b440-d7024f73a88a}"
+    }
+  }
 }
