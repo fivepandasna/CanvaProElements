@@ -1,63 +1,55 @@
-let listening = false;
-let highlightedElement = null;
+let isInspecting = false;
 
-// Listen for messages from the background script
-browser.runtime.onMessage.addListener((message) => {
-  if (message.action === "start") {
-    listening = true;
-    console.log("Click monitoring enabled");
-  } else if (message.action === "stop") {
-    listening = false;
-    console.log("Click monitoring disabled");
-    removeHighlight();
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.inspecting) {
+    isInspecting = true;
+    document.body.style.cursor = "crosshair";
+    document.addEventListener("click", handleClick, true);
+  } else {
+    isInspecting = false;
+    document.body.style.cursor = "";
+    document.removeEventListener("click", handleClick, true);
   }
 });
 
-// Highlight an element
-function highlightElement(element) {
-  removeHighlight();
+function handleClick(event) {
+  if (!isInspecting) return;
 
-  if (element) {
-    highlightedElement = element;
-    highlightedElement.style.outline = "3px solid red";
-  }
+  event.preventDefault();
+  event.stopPropagation();
+
+  const element = event.target;
+  const elementHTML = element.outerHTML;
+
+  // Show a simple pop-up displaying the HTML
+  const overlay = document.createElement("div");
+  overlay.style.position = "fixed";
+  overlay.style.top = "10px";
+  overlay.style.right = "10px";
+  overlay.style.backgroundColor = "white";
+  overlay.style.border = "1px solid #ddd";
+  overlay.style.padding = "10px";
+  overlay.style.zIndex = "9999";
+  overlay.style.maxWidth = "400px";
+  overlay.style.maxHeight = "400px";
+  overlay.style.overflowY = "auto";
+  overlay.style.boxShadow = "0px 2px 4px rgba(0,0,0,0.2)";
+  overlay.innerHTML = `<pre>${escapeHTML(elementHTML)}</pre>`;
+  document.body.appendChild(overlay);
+
+  // Add a close button
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "Close";
+  closeButton.style.marginTop = "10px";
+  closeButton.onclick = () => document.body.removeChild(overlay);
+  overlay.appendChild(closeButton);
+
+  // Stop inspecting
+  isInspecting = false;
+  document.body.style.cursor = "";
+  document.removeEventListener("click", handleClick, true);
 }
 
-// Remove any existing highlight
-function removeHighlight() {
-  if (highlightedElement) {
-    highlightedElement.style.outline = "";
-    highlightedElement = null;
-  }
+function escapeHTML(html) {
+  return html.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
-
-// Handle mouse movement to highlight elements under the cursor
-document.addEventListener("mousemove", (event) => {
-  if (listening) {
-    const elementUnderCursor = event.target;
-    highlightElement(elementUnderCursor);
-  }
-});
-
-// Handle clicks when listening is enabled
-document.addEventListener("click", (event) => {
-  if (listening) {
-    const clickedElement = event.target;
-
-    // Attempt to find an image in the clicked element or its parent
-    const imgElement = clickedElement.closest('div')?.querySelector('img');
-    if (imgElement) {
-      const imageUrl = imgElement.src;
-      console.log("Image URL:", imageUrl);
-
-      browser.runtime.sendMessage({ action: "download", url: imageUrl })
-        .then(() => console.log("Message sent to background script"))
-        .catch((err) => console.error("Failed to send message:", err));
-    } else {
-      console.log("No image found in clicked element.");
-    }
-
-    // Prevent default click behavior
-    event.preventDefault();
-  }
-});
