@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "Highlighter",
+  "name": "Canva Pro Elements",
   "version": "1.0",
-  "description": "Highlights page elements when clicked.",
+  "description": "Currently highlights page elements when clicked.",
   "permissions": [
     "activeTab"
   ],
