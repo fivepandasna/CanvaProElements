@@ -7,7 +7,7 @@ Currently firefox only, chrome soon to come.
 
 Click the extension's icon in the toolbar, then select the element that you want
 
-The element will be downloaded to a designated folder on your computer
+The element will be downloaded to your browser's default download folder.
 
 You can add or edit then add the element to your design
 
