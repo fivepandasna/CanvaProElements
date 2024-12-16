@@ -1,10 +1,11 @@
 {
   "manifest_version": 2,
   "name": "Canva Pro Elements",
-  "version": "1.0",
-  "description": "Currently highlights page elements when clicked.",
+  "version": "2.0",
+  "description": "Extension for highlighting, copying HTML, and downloading images.",
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "storage"
   ],
   "background": {
     "scripts": [
@@ -13,7 +14,8 @@
     "persistent": false
   },
   "browser_action": {
-    "default_title": "Page Element Highlighter"
+    "default_title": "Canva Pro Elements",
+    "default_popup": "popup.html"
   },
   "content_scripts": [
     {
