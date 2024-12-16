@@ -1,28 +1,35 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 2,
   "name": "Canva Pro Elements",
-  "version": "0.1",
+  "version": "2.0",
+  "description": "Extension for highlighting, copying HTML, and downloading images.",
   "permissions": [
-    "activeTab",  // Permission to access the currently active tab
-    "tabs",
+    "activeTab",
     "storage"
   ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_title": "Canva Pro Elements",
+    "default_popup": "popup.html"
+  },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],  // This applies to all pages
-      "js": ["content.js"]  // Content script to find images
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content_script.js"
+      ]
     }
   ],
-  "action": {
-    "default_popup": "popup.html",  // The popup HTML
-    "default_icon": {
-      "16": "icons/icon16.png",
-      "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{6cfa6906-9a54-41ab-b440-d7024f73a88a}"
     }
-  },
-  "host_permissions": [
-    "http://*/*",
-    "https://*/*"
-  ]
+  }
 }

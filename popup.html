@@ -1,39 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Downloader</title>
+  <title>Extension Controls</title>
   <style>
     body {
-      width: 300px;
-      height: 200px;
-      padding: 10px;
+      font-family: Arial, sans-serif;
+      margin: 10px;
+      width: 200px;
     }
-    button {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .image-list {
-      margin-top: 10px;
-      max-height: 150px;
-      overflow-y: scroll;
-    }
-    .image-item {
-      margin-bottom: 5px;
-    }
-    img {
-      width: 50px;
-      height: 50px;
+    label {
+      display: block;
+      margin: 5px 0;
     }
   </style>
 </head>
 <body>
-  <button id="downloadBtn">Download Image</button>
-  <div class="image-list" id="imageList"></div>
-
+  <h3>Extension Toggles</h3>
+  <label>
+    <input type="checkbox" id="highlightToggle" />
+    Highlight Elements
+  </label>
+  <label>
+    <input type="checkbox" id="copyHTMLToggle" />
+    Copy HTML on Click
+  </label>
+  <label>
+    <input type="checkbox" id="downloadImageToggle" />
+    Download Images on Click
+  </label>
   <script src="popup.js"></script>
 </body>
 </html>
