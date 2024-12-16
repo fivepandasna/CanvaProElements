@@ -14,7 +14,7 @@ You can add or edit then add the element to your design
 Currently elements will only download in their original colours
 </details>
 
-## NOTE: The extension is very much so a WIP and currently the functions are not accurate to the title. Would not reccomend downloading it.
+## NOTE: The extension is very much so a WIP and currently the functions are not accurate to the title. Would not reccommend downloading it.
 
 ### Project Goals
 <details>
