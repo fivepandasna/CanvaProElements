@@ -1,11 +1,12 @@
 {
   "manifest_version": 2,
   "name": "Canva Pro Elements",
-  "version": "2.0",
-  "description": "Extension for highlighting, copying HTML, and downloading images.",
+  "version": "2.1",
+  "description": "Extension for highlighting elements and downloading images.",
   "permissions": [
     "activeTab",
-    "storage"
+    "storage",
+    "contextMenus"
   ],
   "background": {
     "scripts": [

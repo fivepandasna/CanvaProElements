@@ -1,12 +1,19 @@
-// Listen for a click on the extension icon
-browser.browserAction.onClicked.addListener(function() {
-  // Open the popup interface
-  browser.runtime.openOptionsPage();
+// Create the context menu for images
+browser.contextMenus.create({
+  id: "downloadImage",
+  title: "Download with Canva Pro",
+  contexts: ["image"],
 });
 
-// Listen for messages from the popup or content scripts
+// Handle the context menu click event
+browser.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.menuItemId === "downloadImage") {
+    browser.tabs.sendMessage(tab.id, { action: "downloadImage", src: info.srcUrl });
+  }
+});
+
+// Listen for messages from the popup to broadcast toggles
 browser.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  // Broadcast toggles to the content script
   if (request.action === "updateToggles") {
     browser.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
       browser.tabs.sendMessage(tabs[0].id, {
