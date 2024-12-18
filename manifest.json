@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Canva Pro Elements",
-  "version": "2.1",
+  "version": "4.0",
   "description": "Extension for highlighting elements and downloading images.",
   "permissions": [
     "activeTab",
