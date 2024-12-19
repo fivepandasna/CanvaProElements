@@ -99,9 +99,10 @@ h1 {
 }
 
 #warning {
-    text-align: center; /* Center the warning message */
-    font-size: 14px;
-    color: #ff6347;
+    text-align: center; 
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
     margin-top: 20px;
 }
 
