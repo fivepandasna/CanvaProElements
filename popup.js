@@ -1,23 +1,106 @@
-const highlightToggle = document.getElementById("highlightToggle");
+document.addEventListener('DOMContentLoaded', function () {
+    // Check if the current page is a Canva page
+    browser.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        const url = tabs[0].url;
 
-// Restore saved toggles from local storage
-browser.storage.local.get(["toggles"]).then((data) => {
-  const toggles = data.toggles || {};
-  highlightToggle.checked = toggles.highlight || false;
+        // If the page is not a Canva page, close the popup or disable buttons
+        if (!url.includes('canva.com')) {
+            document.getElementById('container').innerHTML = "<h1>This extension only works on Canva pages.</h1>";
+            return;
+        }
+
+        // If on Canva page, proceed with the normal behavior
+        document.getElementById('download-button').addEventListener('click', downloadSelectedImages);
+
+        loadImages();
+
+        function loadImages() {
+            browser.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+                browser.tabs.sendMessage(tabs[0].id, { action: "scanImages" });
+            });
+        }
+
+        browser.runtime.onMessage.addListener(function (message) {
+            if (message.action === "imagesScanned") {
+                displayImages(message.data);
+            }
+        });
+
+        function displayImages(imageData) {
+            const imageList = document.getElementById('image-list');
+            imageList.innerHTML = '';
+
+            imageData.forEach((img, index) => {
+                const item = document.createElement('div');
+                item.className = 'image-item';
+
+                const image = document.createElement('img');
+                image.src = img.dataUrl || img.src;
+
+                const sizeLabel = document.createElement('span');
+                sizeLabel.className = 'image-size';
+                sizeLabel.textContent = `${img.width}x${img.height}`;
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.value = JSON.stringify(img);
+                checkbox.addEventListener('change', updateSelectedCount);
+
+                item.appendChild(image);
+                item.appendChild(sizeLabel);
+                item.appendChild(checkbox);
+
+                imageList.appendChild(item);
+            });
+
+            updateSelectedCount();
+        }
+
+        function updateSelectedCount() {
+            const selectedCount = document.querySelectorAll('#image-list input[type="checkbox"]:checked').length;
+            const visibleCount = document.querySelectorAll('#image-list .image-item').length;
+            document.getElementById('selected-count').textContent = selectedCount;
+            document.getElementById('total-count').textContent = visibleCount;
+        }
+
+        function downloadSelectedImages() {
+            const selectedImages = document.querySelectorAll('#image-list input[type="checkbox"]:checked');
+            const imageName = document.getElementById('image-name').value || 'image';
+
+            selectedImages.forEach((checkbox, index) => {
+                const imgData = JSON.parse(checkbox.value);
+                const fileName = `${imageName}_${index + 1}.jpg`;
+                if (imgData.dataUrl) {
+                    downloadDataUrlImage(imgData.dataUrl, fileName);
+                } else {
+                    downloadImage(imgData.src, fileName);
+                }
+            });
+        }
+
+        function downloadDataUrlImage(dataUrl, fileName) {
+            const link = document.createElement('a');
+            link.href = dataUrl;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function downloadImage(url, fileName) {
+            fetch(url)
+                .then(response => response.blob())
+                .then(blob => {
+                    const a = document.createElement('a');
+                    const blobUrl = URL.createObjectURL(blob);
+                    a.href = blobUrl;
+                    a.download = fileName;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(blobUrl);
+                })
+                .catch(error => console.error('Error downloading the image:', error));
+        }
+    });
 });
-
-// Save toggles and notify content script
-function updateToggles() {
-  const toggles = {
-    highlight: highlightToggle.checked,
-  };
-
-  // Save toggles in local storage
-  browser.storage.local.set({ toggles });
-
-  // Notify the background script to update the content script
-  browser.runtime.sendMessage({ action: "updateToggles", toggles });
-}
-
-// Add event listener for the checkbox
-highlightToggle.addEventListener("change", updateToggles);
