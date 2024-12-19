@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Canva Pro Elements",
-  "version": "4.0",
+  "version": "2.2",
   "description": "Extension for highlighting elements and downloading images.",
   "permissions": [
     "activeTab",
@@ -16,7 +16,17 @@
   },
   "browser_action": {
     "default_title": "Canva Pro Elements",
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
   },
   "content_scripts": [
     {
