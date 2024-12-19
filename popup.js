@@ -3,9 +3,10 @@ document.addEventListener('DOMContentLoaded', function () {
     browser.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         const url = tabs[0].url;
 
-        // If the page is not a Canva page, close the popup or disable buttons
+        // If the page is not a Canva page, show the warning and center it
         if (!url.includes('canva.com')) {
-            document.getElementById('container').innerHTML = "<h1>This extension only works on Canva pages.</h1>";
+            document.getElementById('container').innerHTML = "<div id='warning'><p>This extension only works on Canva pages.</p></div>";
+            document.getElementById('warning').style.textAlign = 'center'; // Center align the warning
             return;
         }
 
