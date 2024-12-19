@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "Image Downloader",
+  "name": "Canva Pro Elements",
   "version": "1.0",
-  "description": "Download selected images from the current page",
+  "description": "Download canva pro elements for free in full quality",
   "permissions": [
     "activeTab"
   ],
