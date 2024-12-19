@@ -1,20 +1,18 @@
 ## An extension that allows you to download and use canva pro elements in full quality without a pro account.
-Currently firefox only, chrome soon to come.
+Currently firefox only, manifest v2, chrome may come at some point.
 
 ### Usage/Instructions
 <details open>
   <summary>Usage/Instructions</summary>
 
-Click the extension's icon in the toolbar, then select the element that you want
+Open the element search in canva and find the elements you want
 
-The element will be downloaded to your browser's default download folder.
+Click the extension's icon in the toolbar, and select which elements you want to download
 
-You can add or edit then add the element to your design
+Name the elements and click download, and the elements will be downloaded to your default browser download path
 
 Currently elements will only download in their original colours
 </details>
-
-## NOTE: The extension is very much so a WIP and currently the functions are not accurate to the title. Would not recommend downloading it.
 
 ### Project Goals
 <details>
@@ -22,5 +20,5 @@ Currently elements will only download in their original colours
     
 The current main goal of this project is to allow users to easily download and use canva pro elements for free and without loss
 
-In the future, I hope for this extension to automatically add pro elements to projects with customizable colours when clicked
+In the future, I hope for this extension to automatically add pro elements to projects with customizable colours when right clicked in a context menu
 </details>
