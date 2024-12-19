@@ -16,7 +16,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 #extension-icon {
@@ -31,7 +31,7 @@ h1 {
     font-size: 24px;
     font-weight: bold;
     vertical-align: middle;
-    margin-bottom: 5px; /* Lower the text a bit */
+    margin-bottom: 1px; 
 }
 
 #image-name-container {
