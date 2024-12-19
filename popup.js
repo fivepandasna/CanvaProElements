@@ -1,4 +1,32 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Set default theme to light
+    let isDarkMode = false;
+    const body = document.body;
+    const themeToggle = document.getElementById('theme-toggle');
+
+    // Check if the user previously chose a theme (using localStorage)
+    if (localStorage.getItem('theme') === 'dark') {
+        isDarkMode = true;
+        body.classList.add('dark');
+        themeToggle.checked = true;
+    } else {
+        body.classList.add('light');
+    }
+
+    // Toggle theme based on user preference
+    themeToggle.addEventListener('change', function () {
+        isDarkMode = !isDarkMode;
+        if (isDarkMode) {
+            body.classList.remove('light');
+            body.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            body.classList.remove('dark');
+            body.classList.add('light');
+            localStorage.setItem('theme', 'light');
+        }
+    });
+
     // Check if the current page is a Canva page
     browser.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         const url = tabs[0].url;
