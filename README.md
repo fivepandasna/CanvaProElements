@@ -10,8 +10,8 @@
 [![Downloads](https://img.shields.io/github/downloads/fivepandasna/canva-pro-elements/total?label=downloads&color=208a19&logo=github&style=for-the-badge)](https://github.com/fivepandasna/Canva-Pro-Elements/releases)
 </div>
 
-## An extension that allows you to download and use canva pro elements in full quality without a pro account.
-Currently firefox only, manifest v2, chrome may come at some point.
+## What it does
+Canva Pro Elements is a firefox extension that allows you to download pro elements on the design websie, [Canva](https://www.canva.com) for free.
 
 ### Usage/Instructions
 <details open>
