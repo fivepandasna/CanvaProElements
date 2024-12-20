@@ -35,7 +35,7 @@ Currently elements will only download in their original colours
 </details>
 
 ## Project Goals
-<details>
+<details open>
   <summary>Project Goals</summary>
     
 The current main goal of this project is to allow users to easily download and use canva pro elements for free and without loss
