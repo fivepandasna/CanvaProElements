@@ -11,11 +11,19 @@
 </div>
 
 ## What it does
-Canva Pro Elements is a firefox extension that allows you to download pro elements on the design websie, [Canva](https://www.canva.com) for free.
+Canva Pro Elements is a firefox extension that allows you to download pro elements on the design websie, [Canva](https://www.canva.com) for free
 
-### Usage/Instructions
+### Installation
 <details open>
-  <summary>Usage/Instructions</summary>
+  <summary>Installation</summary>
+
+Download the .xpi file from the most recent [release](https://github.com/fivepandasna/Canva-Pro-Elements/releases), or download the extension from the [mozilla addon store](https://addons.mozilla.org/en-US/firefox/addon/canva-pro-elements)
+
+</details>
+
+### Usage Instructions
+<details open>
+  <summary>Usage</summary>
 
 Open the element search in canva and find the elements you want
 
