@@ -5,7 +5,7 @@
 
 <div align="center">
 
-![cpe_logo]([https://github.com/hannibal002/SkyHanni/assets/24389977/2f52afa0-0330-434e-ba1c-f2affee96bc1](https://raw.githubusercontent.com/fivepandasna/Canva-Pro-Elements/main/assets/logo-80.png))
+![cpe_logo](https://raw.githubusercontent.com/fivepandasna/Canva-Pro-Elements/main/assets/logo-80.png)
 
 [![Downloads](https://img.shields.io/github/downloads/fivepandasna/canva-pro-elements/total?label=downloads&color=208a19&logo=github&style=for-the-badge)](https://github.com/fivepandasna/Canva-Pro-Elements/releases)
 </div>
