@@ -5,9 +5,9 @@
 
 <div align="center">
 
-![cpe_logo](https://raw.githubusercontent.com/fivepandasna/Canva-Pro-Elements/main/assets/logo-80.png)
+![cpe_logo](https://raw.githubusercontent.com/fivepandasna/CanvaProElements/main/assets/logo-80.png)
 
-[![Downloads](https://img.shields.io/github/downloads/fivepandasna/canva-pro-elements/total?label=downloads&color=208a19&logo=github&style=for-the-badge)](https://github.com/fivepandasna/Canva-Pro-Elements/releases)
+[![Downloads](https://img.shields.io/github/downloads/fivepandasna/canvaproelements/total?label=downloads&color=208a19&logo=github&style=for-the-badge)](https://github.com/fivepandasna/Canva-Pro-Elements/releases)
 </div>
 
 ## What it does
