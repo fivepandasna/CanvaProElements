@@ -1,5 +1,5 @@
 <h1 align="center">
-  Canva Pro Elements - An Extension for Free Canva Elements
+  CanvaProElements - An Extension for Free Canva Elements
 </h1>
 
 
