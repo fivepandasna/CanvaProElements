@@ -11,6 +11,9 @@
 [![Downloads](https://img.shields.io/github/downloads/fivepandasna/canvaproelements/total?label=downloads&color=208a19&logo=github&style=for-the-badge)](https://github.com/fivepandasna/Canva-Pro-Elements/releases)
 </div>
 
+## This project is archived and likely won't be maintained again
+This is effectively any other image downloader, but it works only on Canva. I know how this could be done 100x better, but I lack the coding skills to actually make it and use the best methods. If I ever learn how to properly code, this may be revived and made far better.
+
 ## What it does
 Canva Pro Elements is a firefox extension that allows you to download pro elements on the design websie, [Canva](https://www.canva.com) for free
 
